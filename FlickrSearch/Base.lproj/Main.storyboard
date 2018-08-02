@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,6 +117,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AOV-kV-f6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2183.1999999999998" y="-381.85907046476763"/>
+        </scene>
+        <!--Photo Detail View Controller-->
+        <scene sceneID="F6B-Zy-BNK">
+            <objects>
+                <viewController storyboardIdentifier="photoDetail" id="2zO-Wo-7Vr" customClass="PhotoDetailViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Uhb-jM-S8f">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-Fh-Y2D">
+                                <rect key="frame" x="16" y="30" width="343" height="267"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-NP-UQ4">
+                                <rect key="frame" x="16" y="305" width="343" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="12m-ic-DWB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iR5-NP-UQ4" firstAttribute="top" secondItem="Lqm-Fh-Y2D" secondAttribute="bottom" constant="8" id="BpN-0M-29o"/>
+                            <constraint firstItem="9yF-fO-I3u" firstAttribute="trailing" secondItem="iR5-NP-UQ4" secondAttribute="trailing" constant="16" id="LGF-CO-QgY"/>
+                            <constraint firstItem="iR5-NP-UQ4" firstAttribute="leading" secondItem="9yF-fO-I3u" secondAttribute="leading" constant="16" id="NqH-U2-Aov"/>
+                            <constraint firstItem="9yF-fO-I3u" firstAttribute="trailing" secondItem="Lqm-Fh-Y2D" secondAttribute="trailing" constant="16" id="P2f-Tk-7ic"/>
+                            <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="leading" secondItem="9yF-fO-I3u" secondAttribute="leading" constant="16" id="d7R-US-yUC"/>
+                            <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="height" secondItem="Uhb-jM-S8f" secondAttribute="height" multiplier="0.4" id="jRU-Yy-faw"/>
+                            <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="top" secondItem="9yF-fO-I3u" secondAttribute="top" constant="10" id="ujU-Ah-xlL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="9yF-fO-I3u"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2la-xr-rNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3208.8000000000002" y="-313.49325337331339"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TE3-md-G4H">
