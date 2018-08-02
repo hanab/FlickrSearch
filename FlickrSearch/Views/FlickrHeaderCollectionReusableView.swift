@@ -9,6 +9,7 @@
 import UIKit
 
 class FlickrHeaderCollectionReusableView: UICollectionReusableView {
-    @IBOutlet var headerLabel: UILabel!
     
+    //MARK: UIOutlets
+    @IBOutlet var headerLabel: UILabel!
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 
+//holds the photos with the search term used
 struct FlickrSearchResults {
     let searchString : String
     let searchResults : [FlickrPhoto]
@@ -15,22 +16,25 @@ struct FlickrSearchResults {
 
 class SearchedPhotosViewController: UIViewController {
 
+    //MARK: IBoutlets and properties
     @IBOutlet var photosCollectionView: UICollectionView!
-   
     @IBOutlet var searchBar: UITextField!
+    
     var searchAPIDelegate: FlickrAPIClient?
     fileprivate var searches = [FlickrSearchResults]()
-    
-    fileprivate let reuseIdentifier = "cell"
+    //constants to setup collection view
+    fileprivate let reuseIdentifier = "flickerCell"
     fileprivate let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
     fileprivate let itemsPerRow: CGFloat = 3
+    
+    //MARK: Viewcontroller lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         searchBar.delegate = self
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
     }
-    
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout Methods
@@ -52,6 +56,7 @@ extension SearchedPhotosViewController : UICollectionViewDelegateFlowLayout {
         return sectionInsets.left
     }
 }
+
 // MARK: - UITextFieldDelegate Methods
 extension SearchedPhotosViewController : UITextFieldDelegate {
     
@@ -60,14 +65,17 @@ extension SearchedPhotosViewController : UITextFieldDelegate {
         textField.addSubview(activityIndicator)
         activityIndicator.frame = textField.bounds
         activityIndicator.startAnimating()
+        
         let searchString = textField.text!
-        if let ad = searchAPIDelegate {
-            ad.fetchSearchedPhotos(for: searchString, completion: {(result) in
+        
+        if let searchDelegate = searchAPIDelegate {
+            searchDelegate.fetchSearchedPhotos(for: searchString, completion: {(result) in
                 
                 switch result {
                 case let .Success(photos):
                     DispatchQueue.main.async {
                         activityIndicator.removeFromSuperview()
+                        
                         let searchResultForTerm = FlickrSearchResults(searchString: searchString, searchResults: photos)
                         self.searches.insert(searchResultForTerm, at: 0)
                         self.photosCollectionView.reloadData()
@@ -75,8 +83,9 @@ extension SearchedPhotosViewController : UITextFieldDelegate {
                 case let .Failure(error):
                     DispatchQueue.main.async {
                         activityIndicator.removeFromSuperview()
+                        
                         if let error = error {
-                             self.displayAlertWith(title: "Error", message: error.localizedDescription)
+                            self.displayAlertWith(title: "Error", message: error.localizedDescription)
                         }
                     }
                 }
@@ -84,13 +93,14 @@ extension SearchedPhotosViewController : UITextFieldDelegate {
         
         textField.text = nil
         textField.resignFirstResponder()
+        
         return true
     }
-    
-    
 }
 
+//MARK: UICollectionViewDelegate and UICollectionViewDataSource implementation
 extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return searches.count
     }
@@ -101,8 +111,9 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! FlickrPhotoCollectionViewCell
+        
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
-        cell.backgroundColor = UIColor.white
+        
         cell.titleLabel.text = flickrPhoto.title
         cell.flickrImageView.loadImageUsingCacheWithURLString(flickrPhoto.flickrImageURLString()!, placeHolder: nil)
     
@@ -110,10 +121,12 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as! FlickrHeaderCollectionReusableView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerView", for: indexPath) as! FlickrHeaderCollectionReusableView
+        
         if kind == UICollectionElementKindSectionHeader {
             header.headerLabel.text = searches[indexPath.section].searchString
         }
+        
         return header
     }
     
@@ -123,8 +136,9 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
         secondViewController.selectedPhoto = photoForIndexPath(indexPath: indexPath)
         self.navigationController?.pushViewController(secondViewController, animated: true)
     }
-    
 }
+
+//MARK: extension for getting a phot at index
 private extension SearchedPhotosViewController {
     
     func photoForIndexPath(indexPath: IndexPath) -> FlickrPhoto {

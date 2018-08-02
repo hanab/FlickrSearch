@@ -20,6 +20,8 @@
 		1A1EB01B2111A74600D4E9DA /* FlickrAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EB01A2111A74600D4E9DA /* FlickrAPIClient.swift */; };
 		1A1EB01F2111ECD600D4E9DA /* FlickrPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EB01E2111ECD600D4E9DA /* FlickrPhotoCollectionViewCell.swift */; };
 		1A1EB0212111F2A400D4E9DA /* FlickrHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EB0202111F2A400D4E9DA /* FlickrHeaderCollectionReusableView.swift */; };
+		1A1EB0242112F6DE00D4E9DA /* UIAlertViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EB0232112F6DE00D4E9DA /* UIAlertViewController+Extension.swift */; };
+		1A1EB0262112F7AB00D4E9DA /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A1EB0252112F7AB00D4E9DA /* PhotoDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		1A1EB01A2111A74600D4E9DA /* FlickrAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrAPIClient.swift; sourceTree = "<group>"; };
 		1A1EB01E2111ECD600D4E9DA /* FlickrPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		1A1EB0202111F2A400D4E9DA /* FlickrHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		1A1EB0232112F6DE00D4E9DA /* UIAlertViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertViewController+Extension.swift"; sourceTree = "<group>"; };
+		1A1EB0252112F7AB00D4E9DA /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				1A1EAFDF2110832400D4E9DA /* SearchedPhotosViewController.swift */,
+				1A1EB0252112F7AB00D4E9DA /* PhotoDetailViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 		1A1EB0102110841800D4E9DA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				1A1EB0222112F6B800D4E9DA /* ViewController */,
 				1A1EB0152111A04400D4E9DA /* ImageView */,
 			);
 			path = Utils;
@@ -213,6 +219,14 @@
 				1A1EB0162111A07200D4E9DA /* ImageView+Extenstion.swift */,
 			);
 			path = ImageView;
+			sourceTree = "<group>";
+		};
+		1A1EB0222112F6B800D4E9DA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				1A1EB0232112F6DE00D4E9DA /* UIAlertViewController+Extension.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -350,9 +364,11 @@
 				1A1EB01B2111A74600D4E9DA /* FlickrAPIClient.swift in Sources */,
 				1A1EB01421119E5F00D4E9DA /* FlickrPhoto.swift in Sources */,
 				1A1EAFE02110832400D4E9DA /* SearchedPhotosViewController.swift in Sources */,
+				1A1EB0242112F6DE00D4E9DA /* UIAlertViewController+Extension.swift in Sources */,
 				1A1EAFDE2110832400D4E9DA /* AppDelegate.swift in Sources */,
 				1A1EB0172111A07200D4E9DA /* ImageView+Extenstion.swift in Sources */,
 				1A1EB01F2111ECD600D4E9DA /* FlickrPhotoCollectionViewCell.swift in Sources */,
+				1A1EB0262112F7AB00D4E9DA /* PhotoDetailViewController.swift in Sources */,
 				1A1EB0192111A1A100D4E9DA /* FlickrAPI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

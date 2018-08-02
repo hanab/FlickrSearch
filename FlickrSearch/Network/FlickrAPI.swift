@@ -8,30 +8,34 @@
 
 import Foundation
 
+// define methods for Flickr API
 enum Method: String {
     case Search = "flickr.photos.search"
 }
+
+// Flickr API response
 enum PhotosResult {
     case Success([FlickrPhoto])
     case Failure(Error?)
 }
 
+//errors when network request or parsing
 enum FlickrError: Error{
     case InvalidJSONData
     case NoData
 }
-// structure for generating the full url
+
+// structure for generating the full Flickr url
 struct FlickrAPI {
     
     //MARK: Properies
     fileprivate static let baseURLString = "https://api.flickr.com/services/rest"
     fileprivate static let APIKey="cc515094ccc0e681f4f310ea2dc07d7b"
     
-    
     //MARK: Methods
     fileprivate static func flickrURL(method: Method, searchString: String, parameters: [String:String]?) -> URL {
         
-         let escapedTerm = searchString.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? ""
+        let escapedTerm = searchString.addingPercentEncoding(withAllowedCharacters: CharacterSet.alphanumerics) ?? ""
         var components = URLComponents(string: baseURLString)!
         var queryItems = [URLQueryItem]()
         
@@ -61,7 +65,7 @@ struct FlickrAPI {
         return components.url!
     }
     
-    //static function to get the searched
+    //static function to get the searched url
     static func searchedResultsURL(for string: String) -> URL {
         return flickrURL(method: Method.Search, searchString: string,  parameters: nil)
     }
@@ -78,17 +82,17 @@ struct FlickrAPI {
         return FlickrPhoto(photoID: photoID, farm: farm, server: server, secret: secret,title: title)
     }
     
-    //Get all tickets from json
+    //Get all photos from json
     static func flickrPhotosFromJSONData(data: Data?) -> PhotosResult {
         do {
             guard let data = data  else {
                 return .Failure(FlickrError.NoData)
             }
             let jsonObject: AnyObject = try JSONSerialization.jsonObject(with: data, options: []) as AnyObject
+            
             guard let jsonObjectDictionary = jsonObject["photos"] as? [String: AnyObject], let photosArray = jsonObjectDictionary ["photo"] as? [[String: AnyObject]] else {
                 return .Failure( FlickrError.InvalidJSONData)
             }
-            
             var finalPhotos = [FlickrPhoto]()
             
             for photosJSON in photosArray {

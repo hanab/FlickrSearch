@@ -29,7 +29,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="15p-EE-Spr" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="flickerCell" id="15p-EE-Spr" customClass="FlickrPhotoCollectionViewCell" customModule="FlickrSearch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="146" height="145"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -138,6 +138,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sr-J0-AIn">
+                                <rect key="frame" x="62.5" y="405" width="250" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="NAn-de-ztq"/>
+                                    <constraint firstAttribute="height" constant="50" id="oIR-gd-o9g"/>
+                                </constraints>
+                                <state key="normal" title="Open In Browser"/>
+                                <connections>
+                                    <action selector="openImageInBrowser:" destination="2zO-Wo-7Vr" eventType="touchUpInside" id="T5h-Rz-c3K"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -147,14 +158,20 @@
                             <constraint firstItem="9yF-fO-I3u" firstAttribute="trailing" secondItem="Lqm-Fh-Y2D" secondAttribute="trailing" constant="16" id="P2f-Tk-7ic"/>
                             <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="leading" secondItem="9yF-fO-I3u" secondAttribute="leading" constant="16" id="d7R-US-yUC"/>
                             <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="height" secondItem="Uhb-jM-S8f" secondAttribute="height" multiplier="0.4" id="jRU-Yy-faw"/>
+                            <constraint firstItem="8Sr-J0-AIn" firstAttribute="top" secondItem="iR5-NP-UQ4" secondAttribute="bottom" constant="50" id="qQ7-CB-FVb"/>
                             <constraint firstItem="Lqm-Fh-Y2D" firstAttribute="top" secondItem="9yF-fO-I3u" secondAttribute="top" constant="10" id="ujU-Ah-xlL"/>
+                            <constraint firstItem="8Sr-J0-AIn" firstAttribute="centerX" secondItem="Uhb-jM-S8f" secondAttribute="centerX" id="zzR-pu-BVq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9yF-fO-I3u"/>
                     </view>
+                    <connections>
+                        <outlet property="photoImageView" destination="Lqm-Fh-Y2D" id="Ywr-7R-lR2"/>
+                        <outlet property="photoTitleLabel" destination="iR5-NP-UQ4" id="jlV-5d-1cK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2la-xr-rNL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3208.8000000000002" y="-313.49325337331339"/>
+            <point key="canvasLocation" x="2912.8000000000002" y="-287.40629685157421"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TE3-md-G4H">

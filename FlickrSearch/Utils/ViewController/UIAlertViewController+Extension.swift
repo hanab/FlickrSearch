@@ -11,6 +11,7 @@ import UIKit
 
 extension UIViewController {
     
+    //UIViewcontroller extension to display alert
     func displayAlertWith(title: String, message: String, style: UIAlertControllerStyle = .alert) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: style)
         let action = UIAlertAction(title: title, style: .default) { (action) in

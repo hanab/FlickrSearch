@@ -10,7 +10,7 @@ import UIKit
 
 class FlickrPhotoCollectionViewCell: UICollectionViewCell {
     
+    //MARK: UIOutlets
     @IBOutlet var flickrImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
-    
 }

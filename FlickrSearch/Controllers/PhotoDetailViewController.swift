@@ -10,11 +10,13 @@ import UIKit
 
 class PhotoDetailViewController: UIViewController {
 
+    //MARK: UIOutlets and Properties
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var photoTitleLabel: UILabel!
     
     var selectedPhoto: FlickrPhoto?
     
+    //MARK: ViewController lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +25,7 @@ class PhotoDetailViewController: UIViewController {
         setupView(with: selectedPhoto)
     }
     
+    //MARK: Custom funtions
     func setupView(with photo: FlickrPhoto?) {
         guard let photo = photo else {
             return
@@ -32,6 +35,7 @@ class PhotoDetailViewController: UIViewController {
         photoTitleLabel.text = photo.title
     }
     
+    //MARK: IBActions
     @IBAction func openImageInBrowser(_ sender: Any) {
         guard let photo = selectedPhoto, let urlString = photo.flickrImageURLString() else {
             return
