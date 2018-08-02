@@ -11,11 +11,14 @@ import UIKit
 class PhotoDetailViewController: UIViewController {
 
     @IBOutlet var photoImageView: UIImageView!
+    @IBOutlet var photoTitleLabel: UILabel!
+    
     var selectedPhoto: FlickrPhoto?
     
-    @IBOutlet var photoTitleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Share", style: .plain, target: self, action: #selector(share(sender:)))
         
         setupView(with: selectedPhoto)
     }
@@ -27,5 +30,16 @@ class PhotoDetailViewController: UIViewController {
         
         photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString()!, placeHolder: nil)
         photoTitleLabel.text = photo.title
+    }
+    
+    @objc func share(sender:UIButton){
+        let image = self.photoImageView.image
+        let imageToShare = [ image! ]
+        
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
+        
+        self.present(activityViewController, animated: true, completion: nil)
     }
 }
