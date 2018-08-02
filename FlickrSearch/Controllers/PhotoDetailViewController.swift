@@ -32,6 +32,20 @@ class PhotoDetailViewController: UIViewController {
         photoTitleLabel.text = photo.title
     }
     
+    @IBAction func openImageInBrowser(_ sender: Any) {
+        guard let photo = selectedPhoto, let urlString = photo.flickrImageURLString() else {
+            return
+        }
+        
+        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            if #available(iOS 10.0, *) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                UIApplication.shared.openURL(url)
+            }
+        }
+    }
+    
     @objc func share(sender:UIButton){
         let image = self.photoImageView.image
         let imageToShare = [ image! ]

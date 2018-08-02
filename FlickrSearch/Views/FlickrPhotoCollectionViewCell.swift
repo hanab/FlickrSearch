@@ -9,8 +9,8 @@
 import UIKit
 
 class FlickrPhotoCollectionViewCell: UICollectionViewCell {
-    @IBOutlet var flickrImageView: UIImageView!
     
+    @IBOutlet var flickrImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     
 }
