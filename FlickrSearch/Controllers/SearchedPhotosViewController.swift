@@ -76,7 +76,7 @@ extension SearchedPhotosViewController : UITextFieldDelegate {
                     DispatchQueue.main.async {
                         activityIndicator.removeFromSuperview()
                         if let error = error {
-                            // self.displayAlertWith(title: "Error", message: error.localizedDescription)
+                             self.displayAlertWith(title: "Error", message: error.localizedDescription)
                         }
                     }
                 }
@@ -117,9 +117,13 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
         return header
     }
     
-    // MARK: - Private
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let secondViewController = storyboard.instantiateViewController(withIdentifier: "photoDetail") as! PhotoDetailViewController
+        secondViewController.selectedPhoto = photoForIndexPath(indexPath: indexPath)
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
     
-
 }
 private extension SearchedPhotosViewController {
     
