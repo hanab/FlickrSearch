@@ -10,12 +10,22 @@ import UIKit
 
 class PhotoDetailViewController: UIViewController {
 
+    @IBOutlet var photoImageView: UIImageView!
     var selectedPhoto: FlickrPhoto?
     
+    @IBOutlet var photoTitleLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView(with: selectedPhoto)
     }
     
-    
+    func setupView(with photo: FlickrPhoto?) {
+        guard let photo = photo else {
+            return
+        }
+        
+        photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString()!, placeHolder: nil)
+        photoTitleLabel.text = photo.title
+    }
 }
