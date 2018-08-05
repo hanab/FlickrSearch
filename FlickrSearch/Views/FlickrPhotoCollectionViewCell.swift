@@ -13,4 +13,9 @@ class FlickrPhotoCollectionViewCell: UICollectionViewCell {
     //MARK: UIOutlets
     @IBOutlet var flickrImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
+    
+    //MARK: Functions
+    func styleElements() {
+        titleLabel.font = Font.regular12
+    }
 }

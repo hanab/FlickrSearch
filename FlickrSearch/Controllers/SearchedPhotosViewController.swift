@@ -31,6 +31,9 @@ class SearchedPhotosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.navigationBar.barTintColor =  UIColor.flickrYellow()
+        self.navigationController?.navigationBar.titleTextAttributes = [kCTForegroundColorAttributeName : UIColor.white] as [NSAttributedStringKey : Any]
+        
         searchBar.delegate = self
         photosCollectionView.delegate = self
         photosCollectionView.dataSource = self
@@ -114,6 +117,7 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
         
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
         
+        cell.styleElements()
         cell.titleLabel.text = flickrPhoto.title
         cell.flickrImageView.loadImageUsingCacheWithURLString(flickrPhoto.flickrImageURLString() ?? "", placeHolder: UIImage(named: "placeholder"))
     
@@ -125,6 +129,7 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
         
         if kind == UICollectionElementKindSectionHeader {
             header.headerLabel.text = searches[indexPath.section].searchString
+            header.styleElements()
         }
         
         return header

@@ -12,4 +12,10 @@ class FlickrHeaderCollectionReusableView: UICollectionReusableView {
     
     //MARK: UIOutlets
     @IBOutlet var headerLabel: UILabel!
+    
+    //MARK: Functions
+    func styleElements() {
+        headerLabel.font = Font.bold17
+        self.backgroundColor = UIColor.flickrYellow()
+    }
 }

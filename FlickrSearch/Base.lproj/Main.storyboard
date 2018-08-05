@@ -42,7 +42,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bao-Sa-qOs">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bao-Sa-qOs">
                                                     <rect key="frame" x="0.0" y="0.0" width="146" height="116"/>
                                                 </imageView>
                                             </subviews>
@@ -126,7 +126,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-Fh-Y2D">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lqm-Fh-Y2D">
                                 <rect key="frame" x="16" y="30" width="343" height="267"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iR5-NP-UQ4">
@@ -140,11 +140,14 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Sr-J0-AIn">
                                 <rect key="frame" x="62.5" y="405" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.85321516990000001" green="1" blue="0.02493225068" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="NAn-de-ztq"/>
                                     <constraint firstAttribute="height" constant="50" id="oIR-gd-o9g"/>
                                 </constraints>
-                                <state key="normal" title="Open In Browser"/>
+                                <state key="normal" title="Open In Browser">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="openImageInBrowser:" destination="2zO-Wo-7Vr" eventType="touchUpInside" id="T5h-Rz-c3K"/>
                                 </connections>
@@ -165,6 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="9yF-fO-I3u"/>
                     </view>
                     <connections>
+                        <outlet property="openInBrowserButton" destination="8Sr-J0-AIn" id="1N2-yJ-lXL"/>
                         <outlet property="photoImageView" destination="Lqm-Fh-Y2D" id="Ywr-7R-lR2"/>
                         <outlet property="photoTitleLabel" destination="iR5-NP-UQ4" id="jlV-5d-1cK"/>
                     </connections>

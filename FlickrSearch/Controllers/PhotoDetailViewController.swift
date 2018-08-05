@@ -9,7 +9,8 @@
 import UIKit
 
 class PhotoDetailViewController: UIViewController {
-
+    @IBOutlet var openInBrowserButton: UIButton!
+    
     //MARK: UIOutlets and Properties
     @IBOutlet var photoImageView: UIImageView!
     @IBOutlet var photoTitleLabel: UILabel!
@@ -31,6 +32,9 @@ class PhotoDetailViewController: UIViewController {
             return
         }
         self.title = photo.title
+        photoTitleLabel.font = Font.bold17
+        openInBrowserButton.backgroundColor = UIColor.flickrGray()
+        
         photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString() ?? "", placeHolder:  UIImage(named: "placeholder"))
         photoTitleLabel.text = photo.title
     }
