@@ -30,7 +30,7 @@ class PhotoDetailViewController: UIViewController {
         guard let photo = photo else {
             return
         }
-        
+        self.title = photo.title
         photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString()!, placeHolder: nil)
         photoTitleLabel.text = photo.title
     }
