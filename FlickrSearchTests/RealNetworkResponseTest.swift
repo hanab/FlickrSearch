@@ -7,30 +7,42 @@
 //
 
 import XCTest
+@testable import FlickrSearch
 
 class RealNetworkResponseTest: XCTestCase {
-        
+    
+    //MARK: Properties
+    var flickrApiClient:FlickrAPIClient!
+    
     override func setUp() {
         super.setUp()
+        flickrApiClient = FlickrAPIClient(session: URLSession.shared)
+    }
+    
+    //MARK: TestCases
+    func testAPIResponse() {
+        let testExpectation =  expectation(description: "flickr searched photos info expectation")
         
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        flickrApiClient.fetchSearchedPhotos(for: "dog", completion: {(result) in
+            
+            switch result {
+            case let .Success(photos):
+                XCTAssert(photos.count <= 20, "more or less photos than expected \(photos.count)")
+                testExpectation.fulfill()
+            
+            case let .Failure(error):
+                print(error?.localizedDescription ?? "error")
+            }
+        })
+        waitForExpectations(timeout: 10, handler: nil)
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    func testFlickrPhotoInitalizer() {
+        let photo = FlickrPhoto(photoID: "1", farm: 1, server: "2" , secret: "1", title: "lovely dog")
+        XCTAssertEqual(photo.photoID, "1", "The photo ID should be as expected")
+        XCTAssertEqual(photo.farm, 1, "The farm should be as expected")
+        XCTAssertEqual(photo.secret, "1", "The secret should be as expected")
+        XCTAssertEqual(photo.title,  "lovely dog", "The photo title should be as expected")
+        XCTAssertEqual(photo.server,  "2", "The photo server should be as expected")
     }
-    
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
 }
