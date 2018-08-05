@@ -7,29 +7,36 @@
 //
 
 import XCTest
+@testable import FlickrSearch
 
 class JsonMappingTest: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    //MARK: TestCases
+    func testJSONMapping() throws {
+        let bundle = Bundle(for: type(of: self))
+        guard let url = bundle.url(forResource: "testPhotosSample", withExtension: "json") else {
+            XCTFail("Missing file: testPhotosSample.json")
+            return
         }
+        
+        let json = try Data(contentsOf: url)
+        let photoResult:PhotosResult = FlickrAPI.flickrPhotosFromJSONData(data:json)
+        XCTAssertNotNil(photoResult)
+        let photos = photoResult.getPhotos()
+        XCTAssertEqual(photos?.count, 20)
+        
+        //sample test of the second entry
+        guard let photosFromJson = photos else {
+            return
+        }
+        XCTAssertEqual(photosFromJson[1].title, "DSC_0137")
+        XCTAssertEqual(photosFromJson[1].farm, 2)
+        XCTAssertEqual(photosFromJson[1].server, "1837")
+        XCTAssertEqual(photosFromJson[1].secret, "2c01c088a1")
+        XCTAssertEqual(photosFromJson[1].photoID, "42033441540")
     }
-    
 }
