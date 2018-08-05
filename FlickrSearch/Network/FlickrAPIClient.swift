@@ -10,9 +10,18 @@ import Foundation
 
 class FlickrAPIClient {
     
-    private func fetchFlickerPhotos(url: URL, completion: @escaping (_ photos: PhotosResult) -> ()) {
+    //MARK: Properties
+    private let session: NetworkSessionProtocol
+    
+    //MARK: Init
+    init(session: NetworkSessionProtocol) {
+        self.session = session
+    }
+    
+    //MARK: Functions
+    func fetchFlickerPhotos(url: URL, completion: @escaping (_ photos: PhotosResult) -> ()) {
         let request = URLRequest(url: url)
-        let task = URLSession.shared.dataTask(with: request, completionHandler:  { (data, response, error) -> Void in
+        let task = session.sessionDataTask(with: request, completionHandler:  { (data, response, error) -> Void in
             let results = self.processFlickrRequest(data: data, error: error)
             completion(results)
         })

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         let rootViewController = window!.rootViewController as! UINavigationController
         let searchedPhotosViewController = rootViewController.topViewController as! SearchedPhotosViewController
-        searchedPhotosViewController.searchAPIDelegate = FlickrAPIClient()
+        searchedPhotosViewController.searchAPIDelegate = FlickrAPIClient(session: URLSession.shared as NetworkSessionProtocol)
         return true
     }
     
