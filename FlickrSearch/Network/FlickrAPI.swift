@@ -17,6 +17,14 @@ enum Method: String {
 enum PhotosResult {
     case Success([FlickrPhoto])
     case Failure(Error?)
+    
+    //Function added for test purpose
+    public func getPhotos() -> [FlickrPhoto]? {
+        if case .Success(let photos) = self {
+            return photos
+        }
+        return nil
+    }
 }
 
 //errors when network request or parsing
