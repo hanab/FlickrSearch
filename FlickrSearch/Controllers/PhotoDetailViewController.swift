@@ -31,7 +31,7 @@ class PhotoDetailViewController: UIViewController {
             return
         }
         self.title = photo.title
-        photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString()!, placeHolder: nil)
+        photoImageView.loadImageUsingCacheWithURLString(photo.flickrImageURLString() ?? "", placeHolder:  UIImage(named: "placeholder"))
         photoTitleLabel.text = photo.title
     }
     

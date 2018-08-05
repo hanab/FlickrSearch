@@ -115,7 +115,7 @@ extension SearchedPhotosViewController: UICollectionViewDelegate, UICollectionVi
         let flickrPhoto = photoForIndexPath(indexPath: indexPath)
         
         cell.titleLabel.text = flickrPhoto.title
-        cell.flickrImageView.loadImageUsingCacheWithURLString(flickrPhoto.flickrImageURLString()!, placeHolder: nil)
+        cell.flickrImageView.loadImageUsingCacheWithURLString(flickrPhoto.flickrImageURLString() ?? "", placeHolder: UIImage(named: "placeholder"))
     
         return cell
     }

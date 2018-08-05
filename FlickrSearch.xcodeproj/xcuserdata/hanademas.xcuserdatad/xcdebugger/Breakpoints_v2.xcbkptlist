@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrSearch/Controllers/SearchedPhotosViewController.swift"
-            timestampString = "554895390.897969"
+            timestampString = "555176209.75357"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
             <Locations>
@@ -72,11 +72,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrSearch/Network/FlickrAPI.swift"
-            timestampString = "554895390.898333"
+            timestampString = "555176209.753708"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "flickrPhotoFromJSONObject(json:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -88,11 +88,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrSearch/Network/FlickrAPI.swift"
-            timestampString = "554895390.898397"
+            timestampString = "555176209.753811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
             landmarkName = "flickrPhotoFromJSONObject(json:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,13 +104,29 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FlickrSearch/Network/FlickrAPI.swift"
-            timestampString = "554895390.898519"
+            timestampString = "555176209.753907"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "flickrPhotoFromJSONObject(json:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FlickrSearchTests/FlickrSearchNetworkTests.swift"
+            timestampString = "555176209.754004"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "FlickrSearchNetworkTests"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
